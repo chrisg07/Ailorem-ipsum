@@ -1,1 +1,28 @@
 <p>home works!</p>
+
+
+<h2>Topic</h2>
+
+
+<br>
+<form (ngSubmit)="onSubmit()" #promptForm="ngForm">
+  <label for="topics">Choose a topic:</label>
+  <input type="text" class="form-control" id="topics"
+         required [(ngModel)]="topic" name="topics">
+
+  <br>
+
+  <label for="html">Respond in HTML:</label>
+  <input type="checkbox" id="html" name="html" [(ngModel)]="inHtml">
+  <button type="submit" class="btn btn-success" [disabled]="!promptForm.form.valid">Submit</button>
+
+</form>
+
+<!--<button (click)="getResponse()">Get response</button>-->
+<h2>Your prompt</h2>
+
+<p>{{ getPrompt(topic)}}</p>
+
+<h2>Response</h2>
+
+{{ response }}
