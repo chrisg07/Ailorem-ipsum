@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {environment} from "../../../environments/environment.development";
+import {environment} from "../../../environments/environment.example";
 import {Configuration, OpenAIApi} from "openai";
 import {map, Observable} from "rxjs";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
@@ -19,6 +19,15 @@ export class HomeComponent {
   constructor(private http: HttpClient) {}
 
   private getResponse(topic: string): void {
+
+    //clear previous response
+    this.response = '';
+
+    //add loading spinner while waiting for response
+    const spinnerDiv = document.getElementById('spinner-div');
+    if (spinnerDiv) {
+      spinnerDiv.classList.add("spinner");
+    }
     // const configuration = new Configuration({
     //   apiKey: environment.apiKey,
     // });
@@ -45,11 +54,15 @@ export class HomeComponent {
       .subscribe((res: any) => {
         this.response = res.completion;
         console.log(res)
+        //remove loading spinner after getting the response
+        if (spinnerDiv) {
+          spinnerDiv.classList.remove("spinner");
+        }
       })
   }
 
-  public getPrompt(topic: string) {
-    let prompt = environment.prompts.topicIpsum + topic;
+  public getPrompt() {
+    let prompt = environment.prompts.topicIpsum;
 
     if (this.inHtml) {
       prompt += environment.prompts.incentivizeHTML;
@@ -62,6 +75,14 @@ export class HomeComponent {
     if (this.topic) {
       this.getResponse(this.topic);
     }
+  }
+
+  public clearSearch(): void {
+    const topicsInput = document.getElementById("topics") as HTMLInputElement;
+    topicsInput.value = "";
+
+    this.response = '';
+
   }
 
 }
