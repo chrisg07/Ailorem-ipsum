@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Merriweather&display=swap');
+
+body {
+  background: #FFF;
+  background-repeat: no-repeat;
+  font-family: 'Libre Caslon Text', serif;
+  font-family: 'Merriweather', serif;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.checkbox {
+  margin: 10px;
+}

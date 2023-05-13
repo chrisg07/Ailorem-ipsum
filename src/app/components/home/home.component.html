@@ -1,24 +1,35 @@
-<h2>Topic</h2>
+<main class="home-container">
+  <h1 class="homepage-header">AI Lorem Ipsum Generator</h1>
 
-<br>
-<form (ngSubmit)="onSubmit()" #promptForm="ngForm">
-  <label for="topics">Choose a topic:</label>
-  <input type="text" class="form-control" id="topics"
-         required [(ngModel)]="topic" name="topics">
+  <p class="prompt-topic">{{ getPrompt()}}</p>
 
-  <br>
+  <div class="choose-topic-section">
 
-  <label for="html">Respond in HTML:</label>
-  <input type="checkbox" id="html" name="html" [(ngModel)]="inHtml">
-  <button type="submit" class="btn btn-success" [disabled]="!promptForm.form.valid">Submit</button>
+    <h2 class="topic-header">Topic</h2>
 
-</form>
+    <form (ngSubmit)="onSubmit()" #promptForm="ngForm">
+      <label for="topics">Choose a topic:</label>
+      <br>
+      <input type="text" class="form-control" id="topics"
+            required [(ngModel)]="topic" name="topics">
 
-<!--<button (click)="getResponse()">Get response</button>-->
-<h2>Your prompt</h2>
+      <br>
+      
+      <label for="html">Respond in HTML:</label>
+      <input type="checkbox" id="html" name="html" [(ngModel)]="inHtml" class="checkbox">
+      <br>
+      <button type="submit" class="btn btn-success" [disabled]="!promptForm.form.valid">Submit</button>
+      <a (click)="clearSearch()" class="clear-button">Clear Topic</a>
 
-<p>{{ getPrompt(topic)}}</p>
+    </form>
 
-<h2>Response</h2>
+  </div>  
 
-{{ response }}
+  <h2 class="response-header">Response</h2>
+  <div class="spinner-container">
+    <div id="spinner-div"></div>
+  </div>
+  <div id="response-container">
+    {{ response }}
+  </div>
+</main>
