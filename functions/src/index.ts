@@ -16,7 +16,7 @@ exports.openAiResponse2 = functions.https.onRequest(async (request: any, respons
           messages: [
             {
               role: 'user',
-              content: 'Generate gibberish like lorem ipsum but about a certain topic. That topic is: ' + topic
+              content: 'When generating structured HTML content structure it like it was the content of a blog post, not as if it were a stand alone HTML page. Include many varying HTML selectors. Generate structured HTML content telling a story about a specific topic. That topic is: ' + topic + ''
             }
           ],
           temperature: 0.7,
