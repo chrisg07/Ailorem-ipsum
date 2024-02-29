@@ -24,30 +24,7 @@ export class HomeComponent {
     this.response = '';
 
     //add loading spinner while waiting for response
-    const spinnerDiv = document.getElementById('spinner-div');
-    if (spinnerDiv) {
-      spinnerDiv.classList.add("spinner");
-    }
-    // const configuration = new Configuration({
-    //   apiKey: environment.apiKey,
-    // });
-    // const openai = new OpenAIApi(configuration);
-    // const response = openai.createCompletion({
-    //   model: "text-davinci-003",
-    //   prompt: this.getPrompt(topic),
-    //   temperature: 0,
-    //   max_tokens: 1000,
-    // });
-    // fromPromise(response).pipe(
-    //   map(value => value)
-    // ).subscribe((value) => {
-    //   // this.response = value;
-    //   console.log(value.data.choices[0])
-    //   const answer = value.data.choices[0].text;
-    //   if (answer) {
-    //     this.response = answer;
-    //   }
-    // });
+    const spinnerDiv = document.getElementById('spinner-container');
 
     const url = 'https://us-central1-ailorem-ipsum.cloudfunctions.net/openAiResponse2?topic=';
     this.http.get(url + this.topic)
@@ -56,7 +33,7 @@ export class HomeComponent {
         console.log(res)
         //remove loading spinner after getting the response
         if (spinnerDiv) {
-          spinnerDiv.classList.remove("spinner");
+          spinnerDiv.classList.remove("hidden");
         }
       })
   }

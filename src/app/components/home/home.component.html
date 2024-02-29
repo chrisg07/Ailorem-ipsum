@@ -1,32 +1,31 @@
-<main class="prose lg:prose-xl">
-  <h1 class="">AI Lorem Ipsum Generator</h1>
-
-  <div class="choose-topic-section">
-
-    <h2 class="topic-header">Topic</h2>
-
-    <form (ngSubmit)="onSubmit()" #promptForm="ngForm">
-      <label for="topics">Choose a topic:</label>
-      <br>
-      <input type="text" class="form-control" id="topics"
-            required [(ngModel)]="topic" name="topics">
-
-      <br>
-      
-      <label for="html">Respond in HTML:</label>
-      <input type="checkbox" id="html" name="html" [(ngModel)]="inHtml" class="checkbox">
-      <br>
-      <button type="submit" class="btn" [disabled]="!promptForm.form.valid">Submit</button>
-      <a (click)="clearSearch()" class="clear-button">Clear Topic</a>
-
-    </form>
-
-  </div>  
-
-  <h2 class="response-header">Response</h2>
-  <div class="spinner-container">
-    <div id="spinner-div"></div>
+<main class=" prose lg:prose-xl max-w-none p-[.5rem] lg:p-[4rem]">
+  <div class="hero min-h-[50%]">
+    <div class="hero-content text-center bg-base-200 rounded-sm lg:rounded-lg">
+      <div class="max-w-md">
+        <h1 class="text-xl lg:text-5xl font-bold">AI Lorem Ipsum Generator</h1>
+        <p class="py-6">Provide a topic and generate structured HTML influenced by it.</p>
+      </div>
+    </div>
   </div>
-  <div id="response-container" [innerHTML]="response">
+  <form class="py-[1rem] grid gap-[1rem]" (ngSubmit)="onSubmit()" #promptForm="ngForm">
+    <label class="input input-bordered flex items-center gap-2">
+      Topic:
+      <input type="text" class="grow" id="topics" placeholder="Spaghetti" required [(ngModel)]="topic" name="topics">
+    </label>
+    <div class="grid grid-flow-col gap-[1rem]">
+      <button type="submit" class="btn" [disabled]="!promptForm.form.valid">Generate</button>
+      <button type="button" class="btn btn-secondary" [disabled]="!(promptForm.valid && promptForm.dirty)" (click)="clearSearch()">Clear</button>
+    </div>
+
+  </form>
+
+  <div *ngIf="response" class="card w-full bg-neutral shadow-xl">
+    <div class="card-actions justify-end m-[1rem]">
+      <button class="btn btn-primary btn-sm lg:btn-lg">Copy</button>
+    </div>
+    <div class="card-body pt-0">
+      <div [innerHTML]="response"></div>
+    </div>
   </div>
+
 </main>
