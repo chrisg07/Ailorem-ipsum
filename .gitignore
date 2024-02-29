@@ -45,3 +45,4 @@ src/environments/*
 !src/environments/environment.example.ts
 
 functions/.ENV
+.firebase/
