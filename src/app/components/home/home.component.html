@@ -21,10 +21,10 @@
 
   <div *ngIf="response" class="card w-full bg-neutral shadow-xl">
     <div class="card-actions justify-end m-[1rem]">
-      <button class="btn btn-primary btn-sm lg:btn-lg">Copy</button>
+      <button class="btn btn-primary btn-sm lg:btn-lg" (click)="copyResponse(response)">Copy</button>
     </div>
     <div class="card-body pt-0">
-      <div [innerHTML]="response"></div>
+      <div id="generated-response" [innerHTML]="response"></div>
     </div>
   </div>
 
