@@ -61,16 +61,6 @@ export class HomeComponent {
       })
   }
 
-  public getPrompt() {
-    let prompt = environment.prompts.topicIpsum;
-
-    if (this.inHtml) {
-      prompt += environment.prompts.incentivizeHTML;
-    }
-
-    return prompt;
-  }
-
   public onSubmit(): void {
     if (this.topic) {
       this.getResponse(this.topic);
