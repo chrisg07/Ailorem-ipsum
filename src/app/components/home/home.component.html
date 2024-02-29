@@ -16,7 +16,7 @@
       <label for="html">Respond in HTML:</label>
       <input type="checkbox" id="html" name="html" [(ngModel)]="inHtml" class="checkbox">
       <br>
-      <button type="submit" class="btn btn-success" [disabled]="!promptForm.form.valid">Submit</button>
+      <button type="submit" class="btn" [disabled]="!promptForm.form.valid">Submit</button>
       <a (click)="clearSearch()" class="clear-button">Clear Topic</a>
 
     </form>
