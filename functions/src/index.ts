@@ -20,7 +20,7 @@ exports.openAiResponse2 = functions.https.onRequest(async (request: any, respons
             }
           ],
           temperature: 0.7,
-          max_tokens: 200
+          max_tokens: 2000
         },
         {
           headers: {
