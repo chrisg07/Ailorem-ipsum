@@ -7,6 +7,7 @@ admin.initializeApp();
 exports.openAiResponse2 = functions.https.onRequest(async (request: any, response: any) => {
   const apiKey = process.env.OPENAI_API_KEY;
   const topic = request.query.topic;
+
   cors(request, response, async () => {
     try {
       const apiResponse = await axios.post(
@@ -29,6 +30,13 @@ exports.openAiResponse2 = functions.https.onRequest(async (request: any, respons
           },
         },
       );
+
+      const collectionRef = admin.firestore().collection('generated-responses');
+      await collectionRef.add({
+        approvedForDisplay: false, 
+        response: apiResponse.data.choices[0].message.content,
+        topic: topic
+      });
 
       response.status(200).json({
         message: 'OpenAI API connection successful.',
