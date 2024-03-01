@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build Angular App
-        run: ng build --prod
+        run: npm run build:prod
 
       - name: Deploy to Firebase
         run: firebase deploy --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT_AILOREM_IPSUM }}
