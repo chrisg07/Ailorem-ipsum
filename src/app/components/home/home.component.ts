@@ -16,7 +16,7 @@ interface GeneratedResponse {
 })
 export class HomeComponent {
 
-  public responses: string[] = [];
+  public responses: {content: string, topic: string}[] = [];
   public response!: string;
   public topic!: any;
   public inHtml!: boolean;
@@ -47,7 +47,13 @@ export class HomeComponent {
     this.http.get(url + this.topic)
       .subscribe((res: any) => {
         this.response = res.completion;
-        this.responses.push(res.completion);
+        this.responses.push({content: res.completion, topic: this.topic});
+        setTimeout(() => {
+          const container = document.getElementById('response-carousel');
+          if (container) {
+            container.scrollLeft = container.scrollWidth;
+          }
+        }, 5)
       })
   }
 

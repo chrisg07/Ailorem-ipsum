@@ -22,14 +22,15 @@
         </div>
       </form>
 
-      <div class="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box max-w-full lg:max-w-none">
+      <div id="response-carousel" class="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box max-w-full lg:max-w-none">
         <div *ngFor="let generatedResponse of generatedResponses$ | async" class="carousel-item max-w-[90%]">
           <div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem]">
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary btn-sm" (click)="copyResponse(generatedResponse.response)">Copy</button>
+            <div class="card-actions justify-between">
+              <button class="btn btn-active btn-primary btn-sm">{{generatedResponse.topic}}</button>
+              <button class="btn btn-primary btn-sm btn-outline" (click)="copyResponse(generatedResponse.response)">Copy</button>
             </div>
   
-            <div class="card-body pt-0">
+            <div class="card-body p-0 pt-[1rem]">
               <div id="generated-response" [innerHTML]="generatedResponse.response"></div>
             </div>
           </div>
@@ -37,12 +38,13 @@
 
         <div *ngFor="let response of responses" class="carousel-item max-w-[90%]">
           <div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem]">
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary btn-sm" (click)="copyResponse(response)">Copy</button>
+            <div class="card-actions justify-between">
+              <button class="btn btn-active btn-primary btn-sm">{{response.topic}}</button>
+              <button class="btn btn-primary btn-sm btn-outline" (click)="copyResponse(response.content)">Copy</button>
             </div>
   
-            <div class="card-body pt-0">
-              <div id="generated-response" [innerHTML]="response"></div>
+            <div class="card-body p-0 pt-[1rem]">
+              <div id="generated-response" [innerHTML]="response.content"></div>
             </div>
           </div>
         </div> 
