@@ -22,14 +22,18 @@
         </div>
       </form>
 
-      <div *ngIf="response" class="prose lg:prose-lg max-w-none card w-full bg-neutral shadow-xl p-[1rem] lg:p-[2rem]">
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary btn-sm" (click)="copyResponse(response)">Copy</button>
-        </div>
-
-        <div class="card-body pt-0">
-          <div id="generated-response" [innerHTML]="response"></div>
-        </div>
+      <div class="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box max-w-full lg:max-w-none">
+        <div *ngFor="let response of responses" class="carousel-item max-w-[90%]">
+          <div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem]">
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary btn-sm" (click)="copyResponse(response)">Copy</button>
+            </div>
+  
+            <div class="card-body pt-0">
+              <div id="generated-response" [innerHTML]="response"></div>
+            </div>
+          </div>
+        </div> 
       </div>
     </div>
   </div>
