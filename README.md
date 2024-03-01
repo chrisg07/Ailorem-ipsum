@@ -1,7 +1,7 @@
 # AiloremIpsum
 
 ## Framework
-- Angular
+- [Angular](https://angular.io/)
 
 ## Front-end
 - [Tailwind](https://tailwindcss.com/)
