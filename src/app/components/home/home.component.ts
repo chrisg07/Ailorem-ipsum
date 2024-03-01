@@ -1,5 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { Firestore, collectionData, collection, where, query, getDocs } from '@angular/fire/firestore';
+import { Observable, from } from 'rxjs';
+
+interface GeneratedResponse {
+  approvedForDisplay: boolean,
+  response: string,
+  topic: string
+};
 
 @Component({
   selector: 'app-home',
@@ -13,7 +21,26 @@ export class HomeComponent {
   public topic!: any;
   public inHtml!: boolean;
 
-  constructor(private http: HttpClient) {}
+  generatedResponses$: Observable<any[]>;
+  firestore: Firestore = inject(Firestore);
+
+  constructor(private http: HttpClient) {
+    this.generatedResponses$ = from(this.getGeneratedResponses());
+  }
+
+  private async getGeneratedResponses(): Promise<GeneratedResponse[]> {
+    const generatedResponses: GeneratedResponse[] = [];
+    const itemCollection = collection(this.firestore, 'generated-responses');
+    const q = query(itemCollection, where("approvedForDisplay", "==", true));
+    
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      generatedResponses.push(doc.data() as GeneratedResponse)
+    });
+
+    return generatedResponses;
+  }
 
   private getResponse(topic: string): void {
     const url = 'https://us-central1-ailorem-ipsum.cloudfunctions.net/openAiResponse2?topic=';
