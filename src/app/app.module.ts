@@ -10,6 +10,7 @@ import { FirebaseService } from './services/firebase.service';
 import { CopyToClipboardService } from './services/copy-to-clipboard.service';
 import { ResponseTableComponent } from './components/response-table/response-table.component';
 import { CopyButtonComponent } from './components/copy-button/copy-button.component';
+import { ResponseService } from './services/response.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CopyButtonComponent } from './components/copy-button/copy-button.compon
   ],
   providers: [
     FirebaseService, 
-    CopyToClipboardService
+    CopyToClipboardService,
+    ResponseService
   ],
   bootstrap: [AppComponent]
 })

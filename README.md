@@ -14,7 +14,6 @@
 - Figure out how to emulate Firebase functions for quicker local development
 
 ### Enhancments
-- Add copy to clipboard icon to button
 - Update prompt to exclude various HTML elements from generated result
     - <img>, <title>, <meta>, <head>
 - Disable form when new card is being generated
