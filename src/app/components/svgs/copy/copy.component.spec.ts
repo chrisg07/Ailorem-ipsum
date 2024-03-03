@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalCardComponent } from './modal-card.component';
+import { CopyComponent } from './copy.component';
 
-describe('ModalCardComponent', () => {
-  let component: ModalCardComponent;
-  let fixture: ComponentFixture<ModalCardComponent>;
+describe('CopyComponent', () => {
+  let component: CopyComponent;
+  let fixture: ComponentFixture<CopyComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ModalCardComponent]
+      declarations: [CopyComponent]
     });
-    fixture = TestBed.createComponent(ModalCardComponent);
+    fixture = TestBed.createComponent(CopyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

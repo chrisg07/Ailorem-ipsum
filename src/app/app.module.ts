@@ -10,13 +10,17 @@ import { FirebaseService } from './services/firebase.service';
 import { ModalCardComponent } from './components/modal-card/modal-card.component';
 import { CopyToClipboardService } from './services/copy-to-clipboard.service';
 import { ResponseTableComponent } from './components/response-table/response-table.component';
+import { CopyButtonComponent } from './components/copy-button/copy-button.component';
+import { CopyComponent } from './components/icons/copy/copy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ModalCardComponent,
-    ResponseTableComponent
+    ResponseTableComponent,
+    CopyButtonComponent,
+    CopyComponent
   ],
   imports: [
     BrowserModule,

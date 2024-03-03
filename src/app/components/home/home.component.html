@@ -36,7 +36,7 @@
           <div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem]">
             <div class="card-actions justify-between">
               <button class="btn btn-active btn-primary btn-sm">{{generatedResponse.topic}}</button>
-              <button class="btn btn-primary btn-sm btn-outline" (click)="copyToClipboard.copy(generatedResponse.response)">Copy</button>
+              <app-copy-button [value]="generatedResponse.response"></app-copy-button>
             </div>
   
             <div class="card-body p-0 pt-[1rem]">
@@ -49,7 +49,7 @@
           <div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem]">
             <div class="card-actions justify-between">
               <button class="btn btn-active btn-primary btn-sm">{{response.topic}}</button>
-              <button class="btn btn-primary btn-sm btn-outline" (click)="copyToClipboard.copy(response.content)">Copy</button>
+              <app-copy-button [value]="response.content"></app-copy-button>
             </div>
   
             <div class="card-body p-0 pt-[1rem]">

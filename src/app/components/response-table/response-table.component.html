@@ -12,7 +12,7 @@
         <tr *ngFor="let response of responses">
           <td>{{response.topic}}</td>
           <td class="flex justify-end">
-            <button class="btn btn-primary btn-sm btn-outline" (click)="copyToClipboard.copy(response.response)">Copy</button>
+            <app-copy-button [value]="response.response"></app-copy-button>
           </td>    
         </tr>
       </tbody>
