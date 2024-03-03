@@ -3,7 +3,7 @@ import { FirebaseApp, initializeApp } from 'firebase/app';
 import { ReCaptchaV3Provider, initializeAppCheck } from 'firebase/app-check';
 import { getFirestore, collection, getDocs, Firestore, query, where } from 'firebase/firestore/lite';
 
-interface GeneratedResponse {
+export interface GeneratedResponse {
   approvedForDisplay: boolean,
   response: string,
   topic: string

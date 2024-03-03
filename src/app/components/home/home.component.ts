@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Observable, from } from 'rxjs';
-import { FirebaseService } from 'src/app/firebase.service';
-
+import { FirebaseService, GeneratedResponse } from 'src/app/services/firebase.service';
+import { CopyToClipboardService } from 'src/app/services/copy-to-clipboard.service';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +16,11 @@ export class HomeComponent {
   public topic!: any;
   public inHtml!: boolean;
 
-  generatedResponses$: Observable<any[]>;
+  generatedResponses$: Observable<GeneratedResponse[]>;
 
-  constructor(private http: HttpClient, private firebase: FirebaseService) {
+  constructor(private http: HttpClient, private firebase: FirebaseService, public copyToClipboard: CopyToClipboardService) {
     this.generatedResponses$ = from(this.firebase.getGeneratedResponses());
   }
-
-
 
   private getResponse(topic: string): void {
     const url = 'https://us-central1-ailorem-ipsum.cloudfunctions.net/openAiResponse2?topic=';
@@ -45,26 +43,9 @@ export class HomeComponent {
     }
   }
 
-  public copyResponse(val: string){
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-  }
-
   public clearSearch(): void {
     const topicsInput = document.getElementById("topics") as HTMLInputElement;
     topicsInput.value = "";
-
     this.response = '';
-
   }
-
 }

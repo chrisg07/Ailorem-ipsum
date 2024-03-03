@@ -1,0 +1,6 @@
+<div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem] border-solid border-primary border-[1px]">
+    <div class="card-actions justify-between">
+        <button class="btn btn-active btn-primary btn-sm">{{generatedResponse.topic}}</button>
+        <button class="btn btn-primary btn-sm btn-outline" (click)="copyToClipboard.copy(generatedResponse.response)">Copy</button>
+    </div>
+</div>

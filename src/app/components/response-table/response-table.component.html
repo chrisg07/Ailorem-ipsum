@@ -1,0 +1,20 @@
+<div class="overflow-x-auto">
+    <table class="table table-zebra">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- row 1 -->
+        <tr *ngFor="let response of responses">
+          <td>{{response.topic}}</td>
+          <td class="flex justify-end">
+            <button class="btn btn-primary btn-sm btn-outline" (click)="copyToClipboard.copy(response.response)">Copy</button>
+          </td>    
+        </tr>
+      </tbody>
+    </table>
+  </div>

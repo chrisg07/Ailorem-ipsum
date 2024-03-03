@@ -1,11 +1,20 @@
 <main class="max-w-none p-[.5rem] lg:p-[4rem]">
   <div class="lg:grid lg:grid-flow-col lg:grid-cols-3 lg:justify-start lg:items-start lg:gap-[2rem] lg:mb-[2rem] lg:w-full">
-    <div class="hero prose lg:prose-xl ">
-      <div class="hero-content text-center bg-base-200 rounded-sm lg:rounded-lg">
-        <div class="max-w-md">
-          <h1 class="text-xl lg:text-5xl font-bold">AI Lorem Ipsum Generator</h1>
-          <p class="py-6">Provide a topic and generate structured HTML influenced by it.</p>
+    <div>
+      <div class="hero prose lg:prose-xl ">
+        <div class="hero-content text-center bg-base-200 rounded-sm lg:rounded-lg">
+          <div class="max-w-md">
+            <h1 class="text-xl lg:text-5xl font-bold">AI Lorem Ipsum Generator</h1>
+            <p class="py-6">Provide a topic and generate structured HTML influenced by it.</p>
+          </div>
         </div>
+      </div>
+  
+      <div class="hidden lg:grid gap-[1rem] mt-[2rem]">
+        <h3 class="text-lg lg:text-3xl font-bold">Previously Generated</h3>   
+        <ng-container *ngIf="generatedResponses$ | async as responses">
+          <app-response-table [responses]="responses"></app-response-table>
+        </ng-container>
       </div>
     </div>
 
@@ -27,7 +36,7 @@
           <div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem]">
             <div class="card-actions justify-between">
               <button class="btn btn-active btn-primary btn-sm">{{generatedResponse.topic}}</button>
-              <button class="btn btn-primary btn-sm btn-outline" (click)="copyResponse(generatedResponse.response)">Copy</button>
+              <button class="btn btn-primary btn-sm btn-outline" (click)="copyToClipboard.copy(generatedResponse.response)">Copy</button>
             </div>
   
             <div class="card-body p-0 pt-[1rem]">
@@ -40,7 +49,7 @@
           <div class="prose lg:prose-lg w-full rounded-box max-w-none bg-base-200 card shadow-xl p-[1rem] lg:p-[2rem]">
             <div class="card-actions justify-between">
               <button class="btn btn-active btn-primary btn-sm">{{response.topic}}</button>
-              <button class="btn btn-primary btn-sm btn-outline" (click)="copyResponse(response.content)">Copy</button>
+              <button class="btn btn-primary btn-sm btn-outline" (click)="copyToClipboard.copy(response.content)">Copy</button>
             </div>
   
             <div class="card-body p-0 pt-[1rem]">
